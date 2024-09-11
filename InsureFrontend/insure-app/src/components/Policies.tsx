@@ -28,10 +28,44 @@ function Policies() {
         const formData = new FormData(event.currentTarget);
         
         const fireInsuranceSelected = formData.get("FireInsurance") == "on";
+        const floodInsuranceSelected = formData.get("FloodInsurance") == "on";
+        const tornadoInsuranceSelected = formData.get("TornadoInsurance") == "on";
 
        // Cookies.set('myuser',JSON.stringify(user), {expires: 2});
-       const userCookie = Cookies.get("myuser");
-       console.log(fireInsuranceSelected);
+       const userCookie = Cookies.get("myuser") || '';
+       const myUser = JSON.parse(userCookie);
+       myUser.policies = [];
+       
+       if (fireInsuranceSelected) {
+
+        myUser.policies.push("fire insurance");
+       }
+
+       if (floodInsuranceSelected) {
+
+        myUser.policies.push("flood insurance");
+       }
+
+       if (tornadoInsuranceSelected) {
+        myUser.policies.push("tornado insurance");
+
+           
+       }
+    
+        console.log("here");
+
+        console.log(userCookie);
+       
+
+
+        
+            Cookies.set('myuser',JSON.stringify(myUser), {expires: 2});
+
+          
+        navigate("/dashboard");
+     
+    
+      
 
        // navigate("/dashboard");
     };
@@ -48,7 +82,7 @@ function Policies() {
 
                 <div className="formg">
                     <p>Flood Insurance</p>
-                <input name="Floodinsurance" type="checkbox" />
+                <input name="FloodInsurance" type="checkbox" />
 
                 </div>
 

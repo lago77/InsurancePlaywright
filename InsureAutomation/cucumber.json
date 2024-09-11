@@ -7,11 +7,17 @@
             "snipperInterface":"async-await"
         },
 
-        "paths": ["src/test/features/"],
+        "paths": [
+            "src/test/features/registration.feature",
+            "src/test/features/login.feature"
+            
+          ],
         "publishQuiet":true,
-        "dryRun":true,
+        "dryRun":false,
         "require": ["src/test/steps/*.ts"],
         "requireModule": ["ts-node/register"]
+        
+
 
     }
 

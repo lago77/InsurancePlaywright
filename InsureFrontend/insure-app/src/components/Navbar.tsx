@@ -4,9 +4,43 @@ import Homepage from './Homepage';
 import Registration from './Registration';
 import Policie from './Policies';
 
+import Cookies from 'js-cookie';
+
 function Navbar() {
-    const num = true;
-    if (num ) {
+
+    const userCookie = Cookies.get("myuser") || null;
+    console.log(userCookie);
+    let myUser = {loggedin:false};
+    if (userCookie) {
+        try {
+            // Try to parse the cookie only if it's not empty
+           const  myUser = JSON.parse(userCookie);
+        } catch (error) {
+            console.error("Error parsing user cookie:", error);
+        }
+    }
+   // const myUser = JSON.parse(userCookie);
+
+
+
+    function handleLogout() {
+        // Your logout logic here
+        const userCookie = Cookies.get("myuser") || '';
+        console.log(userCookie);
+        const myUser = JSON.parse(userCookie);
+ 
+         console.log(myUser['name']);
+
+       
+         myUser.name = "omar2";
+         myUser.loggedin = false;
+         Cookies.remove("myuser");
+         Cookies.set('myuser',JSON.stringify(myUser), {expires: 2});
+         console.log(myUser['name']);
+      }
+
+
+    if (myUser.loggedin) {
         return (
       
             <div className="navbarLoggedIn">
@@ -22,14 +56,12 @@ function Navbar() {
                 </li>
 
                 <li>
-                   <Link to ="/" >Logout</Link>
+                   <Link to ="/"  onClick = {handleLogout}>Logout</Link>
                 </li>      
     
   
                 </ul> 
 
-   
-    
             </nav>
         </div>
           );

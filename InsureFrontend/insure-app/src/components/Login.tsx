@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
     
     const navigate = useNavigate();
+    const [error, setError] = useState(false);
     const userLogged = {
         username: "",
         name: "",
@@ -31,11 +32,76 @@ function Login() {
         console.log(username);
         userLogged.username = username;
         userLogged.name = name;
+        
        // Cookies.set('myuser',JSON.stringify(user), {expires: 2});
+     
        const userCookie = Cookies.get("myuser");
+       if (userCookie) {
+        console.log("here");
 
-        navigate("/dashboard");
+        console.log(userCookie);
+        const myUser = JSON.parse(userCookie);
+
+        if (myUser.username != username) {
+
+            setError(true);
+        }
+ 
+        else {
+
+            console.log(myUser['name']);
+            myUser.name = "omar2";
+            myUser.loggedin = true;
+        
+            Cookies.set('myuser',JSON.stringify(myUser), {expires: 2});
+            console.log(myUser['name']);
+            setError(false);
+            navigate("/dashboard");
+        }
+       }
+
+       else {
+
+        setError(true);
+       }
+
+      
     };
+
+    if (error ){
+
+        return (
+            <div>
+            <div> 
+                <Navbar />
+                </div>
+            <div className="registration">
+              
+                <h1 className="Register title">Login into your Intact account</h1>
+                <form className="form" onSubmit = {handleLogin}>
+                <h5>Invalid credentials or Non-existent user</h5>
+                    <div className="formg">
+                    <input name="username" type="text" placeholder="Username" />
+    
+                    </div>
+    
+                    <div className="formg">
+                    <input name="password" type="password" placeholder="Password" />
+    
+                    </div>
+    
+                    <div className="formg">
+                    <button type="submit" className="registerButton">Login</button>
+    
+                    </div>
+                 
+                  
+                </form>
+            </div>
+            </div>
+           
+        );    
+    }
 
     
     return (
