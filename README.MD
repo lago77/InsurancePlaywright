@@ -6,7 +6,7 @@ InsureFrontend This isis a react app that simulates an insurance portal for a us
 
 InsureFrontEnd
 --------------
-This isis a react app that simulates an insurance portal for a user to register and apply policies. It uses cookies to maintain a persistent state and it's imperfect. I just set up something simple to run the playwright scenarios.
+This is a react app that simulates an insurance portal for a user to register and apply policies. It uses cookies to maintain a persistent state and it's imperfect. I just set up something simple to run the playwright scenarios.
 
 **Installation**:
 
