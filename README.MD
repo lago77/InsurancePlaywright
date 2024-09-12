@@ -2,8 +2,6 @@
 This a simple and rudimentary project I built to get practice with playwright and cucumber-js. The project is
 separated into two project directories: InsureFrontend and InsureAutomation.
 
-InsureFrontend This isis a react app that simulates an insurance portal for a user to register and apply policies. It uses cookies to maintain a persistent state and it's imperfect. I just set up something simple to run the playwright scenarios.
-
 InsureFrontEnd
 --------------
 This is a react app that simulates an insurance portal for a user to register and apply policies. It uses cookies to maintain a persistent state and it's imperfect. I just set up something simple to run the playwright scenarios.
