@@ -8,7 +8,7 @@ InsureFrontEnd
 --------------
 This isis a react app that simulates an insurance portal for a user to register and apply policies. It uses cookies to maintain a persistent state and it's imperfect. I just set up something simple to run the playwright scenarios.
 
-Installation:
+**Installation**:
 
    a) In the root directory run "npm install"
 
@@ -18,7 +18,7 @@ InsureAutomation
 ----------------
 This is the playwright and cucumber automation project that will test the functionality of the InsureFrontend app It consists of two types of features: A registration and a login feature. Each feature has a positive and negative test case. 
 
-Installation:
+**Installation**:
 
   a)In the root directory run "npm install"
 
