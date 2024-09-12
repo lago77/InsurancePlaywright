@@ -6,6 +6,7 @@ separated into two project directories: InsureFrontend and InsureAutomation.
    Installation
    ------------
    a) In the root directory run "npm install"
+
    b) CD into the insure-app directory and enter "npm start"
 
 
@@ -15,4 +16,5 @@ separated into two project directories: InsureFrontend and InsureAutomation.
   Installation
   ------------
   a)In the root directory run "npm install"
+
   b)Run the command "npm run test"
