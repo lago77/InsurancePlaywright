@@ -12,4 +12,11 @@ Feature: User Registration
     Given User enters a username "oabdi"
     Given User enters a password "password123"
     Then User clicks on the Register button
-    Then The user should see a "Successful registration" message
+    Then The user should see a "Successful registration" message for a successful registration
+
+    Scenario: Unsuccessful Registration - no username input
+    Given User enters an email "omar@gmail.com"
+    Given User enters a name "omar"
+    Given User enters a password "password123"
+    Then User clicks on the Register button
+    Then The user should see a "Unsuccessful registration" message for an unsuccessful registration

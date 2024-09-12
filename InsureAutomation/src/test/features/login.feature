@@ -10,3 +10,9 @@ Feature: User Login
     And User enters their password "password123"
     When User clicks on the login button
     Then User should see their dashboard
+
+    Scenario: Unsuccessful Login - non-existent username
+    And User enters their username "oabdi2"
+    And User enters their password "password123"
+    When User clicks on the login button
+    Then The user should see a "Invalid credentials or Non-existent user" message for an unsuccessful login

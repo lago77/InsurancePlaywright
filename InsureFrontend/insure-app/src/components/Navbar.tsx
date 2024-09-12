@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Homepage from './Homepage';
 import Registration from './Registration';
@@ -8,20 +8,49 @@ import Cookies from 'js-cookie';
 
 function Navbar() {
 
+    const userLogged = {
+        username: "oabdi",
+        name: "omar",
+        policies:[],
+        loggedin: false
+
+
+    }
+    const [login, setLogin] = useState(false);
+
     const userCookie = Cookies.get("myuser") || null;
     console.log(userCookie);
-    let myUser = {loggedin:false};
-    if (userCookie) {
-        try {
-            // Try to parse the cookie only if it's not empty
-           const  myUser = JSON.parse(userCookie);
-        } catch (error) {
-            console.error("Error parsing user cookie:", error);
+    var myUser = {...userLogged};
+    useEffect(() => {
+
+        if (userCookie) {
+            try {
+                console.log("in the try");
+                // Try to parse the cookie only if it's not empty
+               const  parsed= JSON.parse(userCookie);
+               myUser = {...parsed};
+               if (myUser.loggedin) {
+                setLogin(true);
+                
+               }
+               else {
+                setLogin(false);
+               }
+            
+               userLogged.loggedin = myUser.loggedin;
+          
+            } catch (error) {
+                console.error("Error parsing user cookie:", error);
+            }
         }
-    }
+
+    },[]);
+
    // const myUser = JSON.parse(userCookie);
 
-
+    console.log("my logged in user ");
+    console.log("line 39");
+    console.log(userLogged.loggedin);
 
     function handleLogout() {
         // Your logout logic here
@@ -35,12 +64,20 @@ function Navbar() {
          myUser.name = "omar2";
          myUser.loggedin = false;
          Cookies.remove("myuser");
-         Cookies.set('myuser',JSON.stringify(myUser), {expires: 2});
-         console.log(myUser['name']);
+         userLogged.loggedin = myUser.loggedin;
+
+         setLogin(false);
       }
+      console.log(" my logged in");
+      
 
+      console.log("my logged in user ");
+      console.log("line 65");
+      console.log(login);
 
-    if (myUser.loggedin) {
+    if (login) {
+        console.log("am i logged in");
+        console.log("************************");
         return (
       
             <div className="navbarLoggedIn">
@@ -68,6 +105,7 @@ function Navbar() {
         
     }
     else {
+        console.log("am i logged in2");
         return (
       
             <div className="navbar">

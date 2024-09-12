@@ -67,3 +67,19 @@ Then('User should see their dashboard', async function () {
   const myUrl = await page.url();
   console.log(myUrl);
 });
+
+Then('The user should see a {string} message for an unsuccessful login', async function (message) {
+  console.log("line 72");
+  const myUrl = await page.url();
+  console.log(myUrl);
+  const successText =  await page.locator("//h5[normalize-space()='Invalid credentials or Non-existent user']").textContent();
+  console.log(successText);
+  const successMessage =await page.locator("//h5[normalize-space()='Invalid credentials or Non-existent user']")
+  console.log(successText);
+  console.log("----------------");
+  await expect(successText).toEqual(message);
+
+  
+  
+ 
+});

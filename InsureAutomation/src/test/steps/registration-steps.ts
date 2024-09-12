@@ -82,10 +82,19 @@ Then('User clicks on the Register button', async function () {
  ;
 });
 
-Then('The user should see a {string} message', async function (message) {
+Then('The user should see a {string} message for a successful registration', async function (message) {
   const successText =  await page.locator("//h5[normalize-space()='Successful registration']").textContent();
   const successMessage =await page.locator("//h5[normalize-space()='Successful registration']")
   console.log(successText);
-  await expect(successMessage).toBeVisible();
+  await expect(successText).toEqual(message);
  
 });
+
+
+Then('The user should see a {string} message for an unsuccessful registration', async function (message) {
+    const successText =  await page.locator("//h5[normalize-space()='Unsuccessful registration']").textContent();
+    const successMessage =await page.locator("//h5[normalize-space()='Unsuccessful registration']")
+    console.log(successText);
+    await expect(successText).toEqual(message);
+   
+  });

@@ -12,8 +12,8 @@ function Login() {
     const navigate = useNavigate();
     const [error, setError] = useState(false);
     const userLogged = {
-        username: "",
-        name: "",
+        username: "oabdi",
+        name: "omar",
         policies:[],
         loggedin: false
 
@@ -23,7 +23,9 @@ function Login() {
     const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        console.log("registering");
+        console.log("logging in");
+        console.log(Cookies.get("myuser"));
+
         const formData = new FormData(event.currentTarget);
         const username = formData.get("username") as string ;
         const name = formData.get("name") as string;
@@ -43,14 +45,15 @@ function Login() {
         const myUser = JSON.parse(userCookie);
 
         if (myUser.username != username) {
-
+            console.log("logging in as 66666666666666");
+            console.log(username);
             setError(true);
         }
  
         else {
 
             console.log(myUser['name']);
-            myUser.name = "omar2";
+            myUser.name = name;
             myUser.loggedin = true;
         
             Cookies.set('myuser',JSON.stringify(myUser), {expires: 2});
@@ -62,7 +65,11 @@ function Login() {
 
        else {
 
-        setError(true);
+
+
+            setError(true);
+  
+      
        }
 
       
