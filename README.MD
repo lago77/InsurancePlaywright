@@ -9,7 +9,7 @@ separated into two project directories: InsureFrontend and InsureAutomation.
    1)In the root directory run "npm install"
    3)CD into the insure-app directory and enter "npm start"
 
-2)InsureAutomation is the playwright and cucumber automation project that will test the functionality of the InsureFrontend app
+2) InsureAutomation is the playwright and cucumber automation project that will test the functionality of the InsureFrontend app
   -It consists of two types of features: A registration and a login feature. 
   -Each feature has a positive and negative test case. 
 
